@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "name": "Carrot juice",
+      "name": "Carrot juice 2",
       "price": "5",
       "id": 1
     },
@@ -31,39 +31,12 @@
       "id": 7
     },
     {
-      "name": "Diana",
+      "name": "Gatos",
       "price": 1,
       "id": 8
     },
     {
-      "name": "Gato",
-      "price": 1,
       "id": 9
-    },
-    {
-      "name": "Dianaeg",
-      "price": "3",
-      "id": 10
-    },
-    {
-      "name": "Luis",
-      "price": 1,
-      "id": 11
-    },
-    {
-      "name": "Gato",
-      "price": 1,
-      "id": 12
-    },
-    {
-      "name": "Luis",
-      "price": 1,
-      "id": 13
-    },
-    {
-      "name": "Diana 22xv",
-      "price": 1,
-      "id": 15
     }
   ]
 }

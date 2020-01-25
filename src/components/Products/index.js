@@ -1,21 +1,15 @@
 import React, { useEffect } from 'react'
 // Redux
 import { useSelector, useDispatch } from 'react-redux'
-/*import { retrieveProductsAction } from '../../actions/productsActions'*/
 import { downloadProductsAction } from '../../actions/productsActions'
 // useSelector es para recoger el state
 import Product from '../Product'
 
 const Products = () => {
-
 /*  const dispatch = useDispatch()*/
-const prod = useSelector(state => state.products.products)
-console.log(prod)
 
   useEffect(() => {
-    (async () => {
-      await downloadProductsAction()
-    })()
+    (async () => await downloadProductsAction())()
   }, [])
 
   let products = useSelector(state => state.products.products)

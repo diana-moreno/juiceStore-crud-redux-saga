@@ -52,9 +52,9 @@ const addProduct = product => ({
   product: product
 })
 
-const addProductOk = product => ({
-  type: ADD_PRODUCT_OK,
-  payload: product
+const addProductOk = () => ({
+  type: BEGIN_PRODUCTS_DOWNLOAD,
+  payload: true
 })
 
 const addProductError = state => ({
@@ -64,7 +64,7 @@ const addProductError = state => ({
 
 export const addProductAction = product => store.dispatch(addProduct(product))
 
-export const addProductOkAction = product => store.dispatch(addProductOk(product))
+export const addProductOkAction = () => store.dispatch(addProductOk())
 
 export const addProductErrorAction = state => store.dispatch(addProductError(state))
 
@@ -99,7 +99,7 @@ const retrieveProductAction = product => ({
   payload: product
 })
 
-const editProduct = (product) => ({
+const editProduct = product => ({
   type: BEGIN_EDIT_PRODUCT,
   product: product
 })

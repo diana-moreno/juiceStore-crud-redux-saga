@@ -32,9 +32,8 @@ async function retrieveProductsDB() {
 // worker saga
 function* retrieveProducts() {
   try {
-    const response = yield call(retrieveProductsDB)
-    yield put(downloadProductsOkAction(response.data))
-    return response.data
+    const {data} = yield call(retrieveProductsDB)
+    yield downloadProductsOkAction(data)
   } catch (error) {
     yield put(downloadProductsErrorAction())
   }
@@ -56,10 +55,9 @@ async function addProductDB(product) {
 function* addProduct(action) {
   const product = action.product
   try {
-    const response = yield call(addProductDB, product)
+    yield call(addProductDB, product)
    /* const response = await axiosClient.post('/products', product)*/
-/*    yield put(addProductOkAction(product))*/
-    addProductOkAction(product)
+    yield addProductOkAction(product) // descarga los productos actualizados
     // Alert
     Swal.fire(
       'Correct',
@@ -67,7 +65,7 @@ function* addProduct(action) {
       'success'
     )
   } catch (error) {
-    yield put(addProductErrorAction(true))
+    yield addProductErrorAction(true)
     Swal.fire({
       icon: 'error',
       title: 'Error',
@@ -93,14 +91,14 @@ function* deleteProduct(action) {
   const id = action.payload
   try {
     yield call(deleteProductDB, id)
-    deleteProductOkAction()
+    yield deleteProductOkAction()
     Swal.fire(
       'Deleted!',
       'The product has been deleted.',
       'success'
     )
   } catch (error) {
-    deleteProductErrorAction()
+    yield deleteProductErrorAction()
   }
 }
 
@@ -121,9 +119,9 @@ function* editProduct(action) {
   const product = action.product
   try {
     yield call(editProductDB, product)
-    editProductOkAction(product)
+    yield editProductOkAction(product)
   } catch (error) {
-    editProductErrorAction()
+    yield editProductErrorAction()
   }
 }
 
