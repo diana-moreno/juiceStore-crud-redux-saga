@@ -18,16 +18,13 @@
     "sweetalert2": "^9.6.0"
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1",
-    "node-sass": "^4.13.0"
+    "gh-pages": "^2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --runInBand --no-cache",
     "test-debug": "react-scripts inspect test --runInBand --no-cache",
-    "sass": "sass template/index.sass template/index.css",
-    "sass:watch": "sass --watch template/index.sass template/index.css",
     "test:coverage": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
