@@ -1,15 +1,10 @@
-import { put, takeEvery, all, takeLatest } from 'redux-saga/effects'
+import { put, takeEvery, all, takeLatest, call, take } from 'redux-saga/effects'
 import {
   ADD_PRODUCT,
-  ADD_PRODUCT_OK,
-  ADD_PRODUCT_ERROR,
   BEGIN_PRODUCTS_DOWNLOAD,
-/*  PRODUCTS_DOWNLOAD_OK,
-  PRODUCTS_DOWNLOAD_ERROR,*/
   RETRIEVE_PRODUCT_DELETE,
-  PRODUCT_DELETED_OK,
-  PRODUCT_DELETED_ERROR,
   RETRIEVE_PRODUCT_EDIT,
+
   BEGIN_EDIT_PRODUCT,
   PRODUCT_EDITED_OK,
   PRODUCT_EDITED_ERROR
@@ -21,16 +16,24 @@ import store from '../store'
 
 import {
   downloadProductsOkAction,
-  downloadProductsErrorAction
+  downloadProductsErrorAction,
+  addProductOkAction,
+  addProductErrorAction,
+  deleteProductOkAction,
+  deleteProductErrorAction
 } from '../actions/productsActions'
 
 
-// función que descarga los productos de la base de datos
+// retrieve products
+// API call
+async function retrieveProductsDB() {
+  return await axiosClient.get('/products')
+}
 
+// worker saga
 function* retrieveProducts() {
   try {
-    // como se hace la llamada con call saga effect ???
-    const response = yield axiosClient.get('/products')
+    const response = yield call(retrieveProductsDB)
     yield put(downloadProductsOkAction(response.data))
     return response.data
   } catch (error) {
@@ -38,18 +41,80 @@ function* retrieveProducts() {
   }
 }
 
+// watcher saga
 function* retrieveProductsSaga() {
-  yield takeLatest(BEGIN_PRODUCTS_DOWNLOAD, retrieveProducts)
+  yield takeEvery(BEGIN_PRODUCTS_DOWNLOAD, retrieveProducts)
 }
 
-// params id, product???
-export default function* rootSaga(id, product) {
+
+// create new product
+// API call
+async function addProductDB(product) {
+  return await axiosClient.post('/products', product)
+}
+
+// worker saga
+function* addProduct(action) {
+  const product = action.product
+  try {
+    const response = yield call(addProductDB, product)
+   /* const response = await axiosClient.post('/products', product)*/
+/*    yield put(addProductOkAction(product))*/
+    addProductOkAction(product)
+    // Alert
+    Swal.fire(
+      'Correct',
+      'The product has been added successfully',
+      'success'
+    )
+  } catch (error) {
+    yield put(addProductErrorAction(true))
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'An error ocurred. Please, try it again.'
+    })
+  }
+}
+
+// watcher saga
+function* addProductSaga() {
+  yield takeEvery(ADD_PRODUCT, addProduct)
+}
+
+
+// delete product
+// API call
+async function deleteProductDB(id) {
+  return await axiosClient.delete(`/products/${id}`)
+}
+
+// worker saga
+function* deleteProduct(action) {
+  const id = action.payload
+  try {
+    yield call(deleteProductDB, id)
+    deleteProductOkAction()
+    Swal.fire(
+      'Deleted!',
+      'The product has been deleted.',
+      'success'
+    )
+  } catch (error) {
+    deleteProductErrorAction()
+  }
+}
+
+// watcher saga
+function* deleteProductSaga() {
+  yield takeEvery(RETRIEVE_PRODUCT_DELETE, deleteProduct)
+}
+
+
+export default function* rootSaga() {
   yield all([
-/*    editProductAction(),
-    retrieveProductEdit(),
-    deleteProductAction(id),
-    createNewProductAction(product)*/
-/*    retrieveProductsAction(),*/
     retrieveProductsSaga(),
+    addProductSaga(),
+    deleteProductSaga()
   ])
 }

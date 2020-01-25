@@ -24,7 +24,7 @@ const Product = (product) => {
     }).then((result) => {
       if(result.value) {
         // pasarlo al action
-        dispatch(deleteProductAction(id))
+        deleteProductAction(id)
         console.log(id)
       }
     })

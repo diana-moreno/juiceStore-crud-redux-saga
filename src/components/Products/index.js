@@ -8,11 +8,13 @@ import Product from '../Product'
 
 const Products = () => {
 
-  const dispatch = useDispatch()
+/*  const dispatch = useDispatch()*/
+const prod = useSelector(state => state.products.products)
+console.log(prod)
 
   useEffect(() => {
     (async () => {
-      await dispatch(downloadProductsAction())
+      await downloadProductsAction()
     })()
   }, [])
 

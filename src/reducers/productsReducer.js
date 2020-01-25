@@ -30,13 +30,14 @@ export default function(state = initialState, action) {
     case ADD_PRODUCT:
       return {
         ...state,
-        loading: action.payload
+        loading: action.payload,
+        product: action.product // ??
       }
 
     case ADD_PRODUCT_OK:
       return {
         ...state,
-        loading: false, // se cambia directamente??
+        loading: false,
         products: [...state.products, action.payload]
       }
 

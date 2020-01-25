@@ -15,9 +15,10 @@ import {
 } from '../types'
 import axiosClient from '../config/axios'
 import Swal from 'sweetalert2'
-
 import store from '../store'
 
+// payload: el que modifica el state
+// dispatch: es el que manda ejecutar las acciones
 
 // download products actions
 
@@ -26,32 +27,32 @@ const downloadProducts = () => ({
   payload: true
 })
 
-export const downloadProductsAction = () => store.dispatch(downloadProducts())
-
 const downloadProductsOk = products => ({
   type: PRODUCTS_DOWNLOAD_OK,
   payload: products
 })
-
-export const downloadProductsOkAction = (products) => store.dispatch(downloadProductsOk(products))
 
 const downloadProductsError = () => ({
   type: PRODUCTS_DOWNLOAD_ERROR,
   payload: true
 })
 
+export const downloadProductsAction = () => store.dispatch(downloadProducts())
+
+export const downloadProductsOkAction = products => store.dispatch(downloadProductsOk(products))
+
 export const downloadProductsErrorAction = () => store.dispatch(downloadProductsError())
 
 
-// Crear nuevos productos
+// Create new products
 
-// cuando se declara una función aquí, también hay que declararlo en los reducers.
-const addProduct = () => ({
+const addProduct = product => ({
   type: ADD_PRODUCT,
-  payload: true
+  payload: true,
+  product: product
 })
 
-const addProductOk = product => ({ // lo que hay entre paréntesis es el action
+const addProductOk = product => ({
   type: ADD_PRODUCT_OK,
   payload: product
 })
@@ -60,41 +61,13 @@ const addProductError = state => ({
   type: ADD_PRODUCT_ERROR,
   payload: state
 })
-// esta es la función que se tiene que utilizar en el componente, así los datos del componente se pueden pasar a las acciones y después se ejecutan con dispatch.
-//
-// payload: el que modifica el state
-// dispatch: es el que manda ejecutar las acciones
 
-export function createNewProductAction(product) {
-  return async (dispatch) => {
-    // mandar a base de datos o ejecutar el reducer
-    console.log(product)
-    dispatch(addProduct())
-    try {
-      // insertar en la API
-      let response = await axiosClient.post('/products', product)
+export const addProductAction = product => store.dispatch(addProduct(product))
 
-      //return response.data // sin este return, no se crean bien!!!!
+export const addProductOkAction = product => store.dispatch(addProductOk(product))
 
-      // si todo sale bien, modificar estado
-      dispatch(addProductOk(product))
-      // Alerta
-      Swal.fire(
-        'Correct',
-        'The product has been added successfully',
-        'success'
-      )
-    } catch (error) {
-      console.log(error)
-      dispatch(addProductError(true))
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'An error ocurred. Please, try it again.'
-      })
-    }
-  }
-}
+export const addProductErrorAction = state => store.dispatch(addProductError(state))
+// dispatch debería ir fuera, no en las acciones!!!
 
 
 // selecciona y elimina el producto
@@ -112,23 +85,12 @@ const deleteProductError = () => ({
   payload: true
 })
 
-export function deleteProductAction(id) {
-  return async (dispatch) => {
-    dispatch(retrieveProductDelete(id))
-    try {
-      await axiosClient.delete(`/products/${id}`)
-      dispatch(deleteProductOk())
-      // Alerta si lo elimina
-      Swal.fire(
-        'Deleted!',
-        'The product has been deleted.',
-        'success'
-      )
-    } catch(error) {
-      dispatch(deleteProductError())
-    }
-  }
-}
+export const deleteProductAction = id => store.dispatch(retrieveProductDelete(id))
+
+export const deleteProductOkAction = () => store.dispatch(deleteProductOk())
+
+export const deleteProductErrorAction = () => store.dispatch(deleteProductError())
+
 
 
 // editar producto

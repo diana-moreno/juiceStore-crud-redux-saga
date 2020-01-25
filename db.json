@@ -33,6 +33,11 @@
     {
       "name": "Diana",
       "price": 1,
+      "id": 8
+    },
+    {
+      "name": "Gato",
+      "price": 1,
       "id": 9
     },
     {
@@ -41,9 +46,34 @@
       "id": 10
     },
     {
-      "name": "Gato",
-      "price": 2,
+      "name": "Luis",
+      "price": 1,
       "id": 11
+    },
+    {
+      "name": "Gato",
+      "price": 1,
+      "id": 12
+    },
+    {
+      "name": "Luis",
+      "price": 1,
+      "id": 13
+    },
+    {
+      "name": "Gato",
+      "price": 1,
+      "id": 14
+    },
+    {
+      "name": "Diana",
+      "price": 1,
+      "id": 15
+    },
+    {
+      "name": "Prueba",
+      "price": 1,
+      "id": 16
     }
   ]
 }
