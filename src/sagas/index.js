@@ -49,7 +49,7 @@ function* addProduct(action) {
   try {
     yield call(addProductDB, product)
    /* const response = await axiosClient.post('/products', product)*/
-    yield addProductOkAction(product) // descarga los productos actualizados
+    yield addProductOkAction(product) // download actualized products
     // Alert
     Swal.fire(
       'Correct',

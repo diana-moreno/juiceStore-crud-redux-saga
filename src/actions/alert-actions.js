@@ -5,7 +5,6 @@ import {
 import store from '../store'
 
 // Show alert
-
 const createAlert = alert => ({
   type: SHOW_ALERT,
   payload: alert
@@ -14,7 +13,6 @@ const createAlert = alert => ({
 export const showAlert = alert => store.dispatch(createAlert(alert))
 
 // Hide alert
-
 const hideAlert = () => ({
   type: HIDE_ALERT,
   payload: null

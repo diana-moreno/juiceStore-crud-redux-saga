@@ -82,7 +82,7 @@ export default function(state = initialState, action) {
         editProduct: null,
         products: state.products.map(product =>
           product.id === action.payload.id ? product = action.payload : product
-        ) // hace falta iterar por todos si ya sabemos cual es el que cambia?
+        )
       }
 
     default:

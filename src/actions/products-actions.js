@@ -112,5 +112,3 @@ export const editProductAction = product => store.dispatch(editProduct(product))
 export const editProductOkAction = product => store.dispatch(editProductOk(product))
 
 export const editProductErrorAction = () => store.dispatch(editProductError())
-
-// dispatch debería ir fuera, no en las acciones!!!
