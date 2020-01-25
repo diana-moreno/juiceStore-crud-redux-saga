@@ -4,10 +4,7 @@ import {
   BEGIN_PRODUCTS_DOWNLOAD,
   RETRIEVE_PRODUCT_DELETE,
   RETRIEVE_PRODUCT_EDIT,
-
   BEGIN_EDIT_PRODUCT,
-  PRODUCT_EDITED_OK,
-  PRODUCT_EDITED_ERROR
 } from '../types'
 import axiosClient from '../config/axios'
 import Swal from 'sweetalert2'
@@ -20,7 +17,9 @@ import {
   addProductOkAction,
   addProductErrorAction,
   deleteProductOkAction,
-  deleteProductErrorAction
+  deleteProductErrorAction,
+  editProductOkAction,
+  editProductErrorAction
 } from '../actions/productsActions'
 
 
@@ -111,10 +110,36 @@ function* deleteProductSaga() {
 }
 
 
+// Edit product
+// API call
+async function editProductDB(product) {
+  return await axiosClient.put(`/products/${product.id}`, product)
+}
+
+// worker saga
+function* editProduct(action) {
+  const product = action.product
+  try {
+    yield call(editProductDB, product)
+    editProductOkAction(product)
+  } catch (error) {
+    editProductErrorAction()
+  }
+}
+
+// watcher saga
+function* editProductSaga() {
+  yield takeEvery(BEGIN_EDIT_PRODUCT, editProduct)
+}
+
+// export all sagas
 export default function* rootSaga() {
   yield all([
     retrieveProductsSaga(),
     addProductSaga(),
-    deleteProductSaga()
+    deleteProductSaga(),
+    editProductSaga()
   ])
 }
+
+// separate API calls in other folders

@@ -9,7 +9,7 @@ const EditProduct = () => {
     price: ''
   })
   const history = useHistory()
-  const dispatch = useDispatch()
+/*  const dispatch = useDispatch()*/
 
   const productEdit = useSelector(state => state.products.editProduct)
 
@@ -21,7 +21,7 @@ const EditProduct = () => {
 
   const submitEditProduct = event => {
     event.preventDefault()
-    dispatch(editProductAction(product))
+    editProductAction(product)
     history.push('/')
   }
 

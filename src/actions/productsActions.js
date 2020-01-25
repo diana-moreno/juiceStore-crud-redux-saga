@@ -67,10 +67,10 @@ export const addProductAction = product => store.dispatch(addProduct(product))
 export const addProductOkAction = product => store.dispatch(addProductOk(product))
 
 export const addProductErrorAction = state => store.dispatch(addProductError(state))
-// dispatch debería ir fuera, no en las acciones!!!
 
 
-// selecciona y elimina el producto
+// Delete products
+
 const retrieveProductDelete = id => ({
   type: RETRIEVE_PRODUCT_DELETE,
   payload: id
@@ -92,24 +92,16 @@ export const deleteProductOkAction = () => store.dispatch(deleteProductOk())
 export const deleteProductErrorAction = () => store.dispatch(deleteProductError())
 
 
+// Edit product
 
-// editar producto
 const retrieveProductAction = product => ({
   type: RETRIEVE_PRODUCT_EDIT,
   payload: product
 })
 
-export function retrieveProductEdit(product) {
-  return (dispatch) => {
-    dispatch(retrieveProductAction(product))
-  }
-}
-
-
-// editar
-
-const editProduct = () => ({
-  type: BEGIN_EDIT_PRODUCT
+const editProduct = (product) => ({
+  type: BEGIN_EDIT_PRODUCT,
+  product: product
 })
 
 const editProductOk = product => ({
@@ -122,14 +114,12 @@ const editProductError = () => ({
   payload: true
 })
 
-export function editProductAction(product) {
-  return async (dispatch) => {
-    dispatch( editProduct(product))
-    try {
-      await axiosClient.put(`/products/${product.id}`, product)
-      dispatch(editProductOk(product))
-    } catch (error) {
-      dispatch(editProductError())
-    }
-  }
-}
+export const retrieveProductEditAction = product => store.dispatch(retrieveProductAction(product))
+
+export const editProductAction = product => store.dispatch(editProduct(product))
+
+export const editProductOkAction = product => store.dispatch(editProductOk(product))
+
+export const editProductErrorAction = () => store.dispatch(editProductError())
+
+// dispatch debería ir fuera, no en las acciones!!!
