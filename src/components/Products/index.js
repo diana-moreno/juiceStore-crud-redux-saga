@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { downloadProductsAction } from '../../actions/products-actions'
 import Product from '../Product'
 
 const Products = () => {
-/*  const dispatch = useDispatch()*/
-
   useEffect(() => {
     (async () => await downloadProductsAction())()
   }, [])

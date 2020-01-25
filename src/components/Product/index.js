@@ -1,14 +1,11 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import { useDispatch } from 'react-redux'
 import { deleteProductAction, retrieveProductEditAction } from '../../actions/products-actions'
 
 const Product = (product) => {
-  const { name, price, id } = product
-
-/*  const dispatch = useDispatch()*/
   const history = useHistory()
+  const { name, price, id } = product
 
   const confirmDeleteProduct = id => {
     // ask the user for confirmation
