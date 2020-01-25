@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { editProductAction } from '../../actions/products-actions'
 import { useHistory } from 'react-router-dom'
 
 const EditProduct = () => {
+  const history = useHistory()
+  const productEdit = useSelector(state => state.products.editProduct)
   const [product, setProduct] = useState({
     name: '',
     price: ''
   })
-  const history = useHistory()
-/*  const dispatch = useDispatch()*/
-
-  const productEdit = useSelector(state => state.products.editProduct)
 
   // fill state
   useEffect(() => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { addProductAction } from '../../actions/products-actions'
 import { showAlert, hideAlertAction } from '../../actions/alert-actions'
 
@@ -14,7 +14,7 @@ const Newproduct = ({ history }) => {
 
   const submitNewProduct = async event => {
     event.preventDefault()
-    // validar formulario
+    // validate form
     if(name.trim() === '' || price <= 0) {
       const alert = {
         msg: 'All fields are required.'

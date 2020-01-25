@@ -25,7 +25,7 @@ import {
   editProductDB
 } from '../api-calls'
 
-// retrieve products
+// Retrieve products
 // worker saga
 function* retrieveProducts() {
   try {
@@ -42,7 +42,7 @@ function* retrieveProductsSaga() {
 }
 
 
-// create new product
+// Create new product
 // worker saga
 function* addProduct(action) {
   const product = action.product
@@ -72,7 +72,7 @@ function* addProductSaga() {
 }
 
 
-// delete product
+// Delete product
 // worker saga
 function* deleteProduct(action) {
   const id = action.payload
@@ -112,7 +112,7 @@ function* editProductSaga() {
   yield takeEvery(BEGIN_EDIT_PRODUCT, editProduct)
 }
 
-// export all sagas
+// Export all sagas
 export default function* rootSaga() {
   yield all([
     retrieveProductsSaga(),
