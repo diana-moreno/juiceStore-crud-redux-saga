@@ -17,18 +17,13 @@
     },
     {
       "name": "Lemon juice",
-      "price": "2",
+      "price": "3",
       "id": 4
     },
     {
-      "name": "strawberry juice",
-      "price": "2",
+      "name": "Pineapple juice",
+      "price": 1,
       "id": 5
-    },
-    {
-      "name": "berry juice",
-      "price": "5",
-      "id": 7
     }
   ]
 }

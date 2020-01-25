@@ -1,15 +1,14 @@
-import { put, takeEvery, all, takeLatest, call, take } from 'redux-saga/effects'
+import { put, takeEvery, all, call } from 'redux-saga/effects'
+import axiosClient from '../config/axios'
+import Swal from 'sweetalert2'
 import {
   ADD_PRODUCT,
   BEGIN_PRODUCTS_DOWNLOAD,
   RETRIEVE_PRODUCT_DELETE,
-  RETRIEVE_PRODUCT_EDIT,
   BEGIN_EDIT_PRODUCT,
 } from '../types'
-import axiosClient from '../config/axios'
-import Swal from 'sweetalert2'
 
-import store from '../store'
+/*import store from '../store'*/
 
 import {
   downloadProductsOkAction,
@@ -20,7 +19,7 @@ import {
   deleteProductErrorAction,
   editProductOkAction,
   editProductErrorAction
-} from '../actions/productsActions'
+} from '../actions/products-actions'
 
 
 // retrieve products

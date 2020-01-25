@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import productsReducer from './productsReducer'
-import alertReducer from './alertReducer'
+import productsReducer from './products-reducer'
+import alertReducer from './alert-reducer'
 
 export default combineReducers({
   products: productsReducer,
   alert: alertReducer
 })
 
-// si vamos a tener varios reducers, hay que utilizar combineReducers porque solo puede haber uno.
+// If we are going to have several reducers, we must use combine them because there can only be one

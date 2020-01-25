@@ -1,23 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import rootSaga from './sagas'
-import thunk from 'redux-thunk'
-
 import reducer from './reducers'
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(
   reducer,
-  applyMiddleware(sagaMiddleware),
-/*  compose(applyMiddleware(thunk), // applyMiddleware se requiere porque vamos a utilizar thunk
+  compose(
     applyMiddleware(sagaMiddleware),
-    typeof window === 'object' &&
-    typeof window.__REDUX_DEVTOOLS_EXTENSION__
+    typeof window === 'object' && typeof window.__REDUX_DEVTOOLS_EXTENSION__
     ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
-  )*/
+  )
 )
-sagaMiddleware.run(rootSaga) // los sagas no funcionan sin esto, los actions sí
+sagaMiddleware.run(rootSaga)
 
 export default store

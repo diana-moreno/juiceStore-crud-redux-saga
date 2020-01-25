@@ -3,7 +3,7 @@ import {
   HIDE_ALERT
 } from '../types'
 
-// cada reducer tiene su state
+// every reducer has it own state
 const initialState = {
   alert: null
 }

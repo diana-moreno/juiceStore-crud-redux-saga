@@ -11,10 +11,9 @@ export const PRODUCT_DELETED_OK = 'PRODUCT_DELETED_OK'
 export const PRODUCT_DELETED_ERROR = 'PRODUCT_DELETED_ERROR'
 
 export const RETRIEVE_PRODUCT_EDIT= 'RETRIEVE_PRODUCT_EDITED'
-export const BEGIN_EDIT_PRODUCT = 'BEGIN_EDIT_PRODUCT' // no se usa
+export const BEGIN_EDIT_PRODUCT = 'BEGIN_EDIT_PRODUCT'
 export const PRODUCT_EDITED_OK = 'PRODUCT_EDITED_OK'
 export const PRODUCT_EDITED_ERROR = 'PRODUCT_EDITED_ERROR'
 
 export const SHOW_ALERT = 'SHOW_ALERT'
 export const HIDE_ALERT = 'HIDE_ALERT'
-// los types son los que van definiendo lo que pasa en la aplicación

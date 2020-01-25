@@ -15,7 +15,6 @@
     "react-scripts": "3.3.0",
     "redux": "^4.0.5",
     "redux-saga": "^0.15.0",
-    "redux-thunk": "^2.3.0",
     "sweetalert2": "^9.6.0"
   },
   "devDependencies": {

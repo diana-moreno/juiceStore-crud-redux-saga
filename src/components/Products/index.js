@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
-// Redux
 import { useSelector, useDispatch } from 'react-redux'
-import { downloadProductsAction } from '../../actions/productsActions'
-// useSelector es para recoger el state
+import { downloadProductsAction } from '../../actions/products-actions'
 import Product from '../Product'
 
 const Products = () => {

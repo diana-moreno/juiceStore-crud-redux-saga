@@ -1,6 +1,5 @@
 import {
   ADD_PRODUCT,
-  ADD_PRODUCT_OK,
   ADD_PRODUCT_ERROR,
   BEGIN_PRODUCTS_DOWNLOAD,
   PRODUCTS_DOWNLOAD_OK,
@@ -13,15 +12,10 @@ import {
   PRODUCT_EDITED_OK,
   PRODUCT_EDITED_ERROR
 } from '../types'
-import axiosClient from '../config/axios'
-import Swal from 'sweetalert2'
 import store from '../store'
 
-// payload: el que modifica el state
-// dispatch: es el que manda ejecutar las acciones
 
-// download products actions
-
+// Download products actions
 const downloadProducts = () => ({
   type: BEGIN_PRODUCTS_DOWNLOAD,
   payload: true
@@ -45,7 +39,6 @@ export const downloadProductsErrorAction = () => store.dispatch(downloadProducts
 
 
 // Create new products
-
 const addProduct = product => ({
   type: ADD_PRODUCT,
   payload: true,
@@ -70,7 +63,6 @@ export const addProductErrorAction = state => store.dispatch(addProductError(sta
 
 
 // Delete products
-
 const retrieveProductDelete = id => ({
   type: RETRIEVE_PRODUCT_DELETE,
   payload: id
@@ -93,7 +85,6 @@ export const deleteProductErrorAction = () => store.dispatch(deleteProductError(
 
 
 // Edit product
-
 const retrieveProductAction = product => ({
   type: RETRIEVE_PRODUCT_EDIT,
   payload: product

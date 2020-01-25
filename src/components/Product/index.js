@@ -1,9 +1,8 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
-// Redux
 import { useDispatch } from 'react-redux'
-import { deleteProductAction, retrieveProductEditAction } from '../../actions/productsActions'
+import { deleteProductAction, retrieveProductEditAction } from '../../actions/products-actions'
 
 const Product = (product) => {
   const { name, price, id } = product
@@ -12,7 +11,7 @@ const Product = (product) => {
   const history = useHistory()
 
   const confirmDeleteProduct = id => {
-    // preguntar al usuario
+    // ask the user for confirmation
     Swal.fire({
       title: 'Are you sure you want to delete the product?',
       text: "You won't be able to revert this!",
@@ -26,7 +25,7 @@ const Product = (product) => {
     })
   }
 
-  // función que redirige de forma programada, es mejor que Link
+  // function that redirects automátically, is better than 'Link'
   const redirectionEdition = product => {
     retrieveProductEditAction(product)
     history.push(`products/edit/${id}`)

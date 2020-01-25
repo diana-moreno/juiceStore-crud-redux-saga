@@ -14,8 +14,6 @@ import {
   PRODUCT_EDITED_ERROR
 } from '../types'
 
-// cada reducer tiene su propi state
-
 const initialState = {
   products: [],
   error: false,
@@ -28,17 +26,17 @@ export default function(state = initialState, action) {
 
     case BEGIN_PRODUCTS_DOWNLOAD:
     case ADD_PRODUCT:
+    case BEGIN_EDIT_PRODUCT:
       return {
         ...state,
         loading: action.payload,
-        product: action.product // ??
+        product: action.product
       }
 
     case ADD_PRODUCT_OK:
       return {
         ...state,
-        loading: false,
-        products: [...state.products, action.payload]
+        loading: false
       }
 
     case ADD_PRODUCT_ERROR:
@@ -58,11 +56,13 @@ export default function(state = initialState, action) {
         error: null,
         products: action.payload
       }
+
     case RETRIEVE_PRODUCT_DELETE:
       return {
         ...state,
         deleteProduct: action.payload
       }
+
     case PRODUCT_DELETED_OK:
       return {
         ...state,
