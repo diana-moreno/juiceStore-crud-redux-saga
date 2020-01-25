@@ -1,5 +1,4 @@
 import { put, takeEvery, all, call } from 'redux-saga/effects'
-import axiosClient from '../config/axios'
 import Swal from 'sweetalert2'
 import {
   ADD_PRODUCT,
@@ -7,8 +6,6 @@ import {
   RETRIEVE_PRODUCT_DELETE,
   BEGIN_EDIT_PRODUCT,
 } from '../types'
-
-/*import store from '../store'*/
 
 import {
   downloadProductsOkAction,
@@ -21,13 +18,14 @@ import {
   editProductErrorAction
 } from '../actions/products-actions'
 
+import {
+  retrieveProductsDB,
+  addProductDB,
+  deleteProductDB,
+  editProductDB
+} from '../api-calls'
 
 // retrieve products
-// API call
-async function retrieveProductsDB() {
-  return await axiosClient.get('/products')
-}
-
 // worker saga
 function* retrieveProducts() {
   try {
@@ -45,11 +43,6 @@ function* retrieveProductsSaga() {
 
 
 // create new product
-// API call
-async function addProductDB(product) {
-  return await axiosClient.post('/products', product)
-}
-
 // worker saga
 function* addProduct(action) {
   const product = action.product
@@ -80,11 +73,6 @@ function* addProductSaga() {
 
 
 // delete product
-// API call
-async function deleteProductDB(id) {
-  return await axiosClient.delete(`/products/${id}`)
-}
-
 // worker saga
 function* deleteProduct(action) {
   const id = action.payload
@@ -108,11 +96,6 @@ function* deleteProductSaga() {
 
 
 // Edit product
-// API call
-async function editProductDB(product) {
-  return await axiosClient.put(`/products/${product.id}`, product)
-}
-
 // worker saga
 function* editProduct(action) {
   const product = action.product
@@ -138,5 +121,3 @@ export default function* rootSaga() {
     editProductSaga()
   ])
 }
-
-// separate API calls in other folders
