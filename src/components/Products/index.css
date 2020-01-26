@@ -1,0 +1,38 @@
+.table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 45rem;
+  margin: 0 auto;
+  background-color: #ffffffcc;
+  margin-bottom: 3rem;
+}
+
+.table th, .table td {
+  padding: 0.7rem;
+}
+
+/*.table tr:nth-child(even){background-color: #f5f5f5}
+*/
+
+.table tr:hover {background-color: #62a08626;}
+
+.table th {
+  padding: 1rem;
+  text-align: left;
+  background-color: #62a086;
+  color: white;
+}
+
+.table__title {
+  text-align: center;
+  background-color: #ffffffa1;
+  padding: 1rem;
+  color: #034029;
+  letter-spacing: 0.2rem;
+}
+
+#table__title-action,
+#table__title-price,
+#table__title-id {
+  text-align: center;
+}

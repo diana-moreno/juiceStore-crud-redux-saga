@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { addProductAction } from '../../actions/products-actions'
 import { showAlert, hideAlertAction } from '../../actions/alert-actions'
+import './index.css'
 
 const Newproduct = ({ history }) => {
   const [name, setName] = useState('')
@@ -30,12 +31,17 @@ const Newproduct = ({ history }) => {
     history.push('/')
   }
 
+  const goBack = () => {
+    history.push('/')
+  }
+
   return (
     <div>
-      <h1>Add new product</h1>
-      { alert ? <p>{alert.msg}</p> : null }
-      <form onSubmit={submitNewProduct} >
-        <section>
+      <h2 className='table__title'>New product</h2>
+      <form
+        className='form'
+        onSubmit={submitNewProduct} >
+        <section className='form__section'>
           <label>Product name</label>
           <input
             type='text'
@@ -45,7 +51,7 @@ const Newproduct = ({ history }) => {
             onChange={event => setName(event.target.value)}
           />
         </section>
-        <section>
+        <section className='form__section'>
           <label>Product price</label>
           <input
             type='number'
@@ -55,7 +61,15 @@ const Newproduct = ({ history }) => {
             onChange={event => setPrice(Number(event.target.value))}
           />
         </section>
-        <button >Add new</button>
+        <div className='button__container'>
+          <button
+            type='button'
+            className='button button--cancel'
+            onClick={goBack}
+           >Cancel</button>
+          <button className='button button--confirm'>Confirm</button>
+        </div>
+        { alert ? <p className='alert-message'>{alert.msg}</p> : null }
       </form>
       { loading ? <p>Loading...</p> : null }
       { error ? <p>Ups! An error ocurred.</p> : null }

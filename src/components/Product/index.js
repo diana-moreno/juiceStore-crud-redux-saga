@@ -2,6 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { deleteProductAction, retrieveProductEditAction } from '../../actions/products-actions'
+import './index.css'
 
 const Product = (product) => {
   const history = useHistory()
@@ -14,8 +15,8 @@ const Product = (product) => {
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#62a086',
+      cancelButtonColor: '#f66b61',
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       result.value && deleteProductAction(id)
@@ -31,14 +32,15 @@ const Product = (product) => {
   return (
     <tr>
       <td>{name}</td>
-      <td>{price}</td>
-      <td>{id}</td>
-      <td>
+      <td className='prices'>{price} $</td>
+      <td className='button-container'>
         <button
+          className='button button--edit'
           type='button'
           onClick={() => redirectionEdition(product)}
         >Edit</button>
         <button
+          className='button button--delete'
           type='button'
           onClick={() => confirmDeleteProduct(id)}
         >Delete</button>

@@ -1,0 +1,47 @@
+.form {
+  width: fit-content;
+  margin: 6rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form__section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  align-items: center;
+  width: 100%;
+}
+
+.form__section label {
+  margin-right: 2rem;
+}
+
+.form__section input {
+  padding: 0.5rem;
+  border: 0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: Montserrat;
+}
+
+.button__container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.button--confirm {
+  width: 10rem;
+  background-color: #62a086;
+  margin-top: 2rem;
+  padding: 0.5rem;
+}
+
+.button--cancel {
+  width: 10rem;
+  background-color: #f66b61;
+  margin-top: 2rem;
+  padding: 0.5rem;
+}

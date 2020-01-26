@@ -50,12 +50,13 @@ function* addProduct(action) {
     yield call(addProductDB, product)
    /* const response = await axiosClient.post('/products', product)*/
     yield addProductOkAction(product) // download actualized products
-    // Alert
-    Swal.fire(
-      'Correct',
-      'The product has been added successfully',
-      'success'
-    )
+      // Alert
+    Swal.fire({
+      title: 'Added!',
+      text: 'The product has been added successfully',
+      icon: 'success',
+      confirmButtonColor: '#62a086'
+    })
   } catch (error) {
     yield addProductErrorAction(true)
     Swal.fire({
@@ -79,11 +80,12 @@ function* deleteProduct(action) {
   try {
     yield call(deleteProductDB, id)
     yield deleteProductOkAction()
-    Swal.fire(
-      'Deleted!',
-      'The product has been deleted.',
-      'success'
-    )
+    Swal.fire({
+      title: 'Deleted!',
+      text: 'The product has been deleted.',
+      icon: 'success',
+      confirmButtonColor: '#62a086'
+    })
   } catch (error) {
     yield deleteProductErrorAction()
   }
@@ -102,6 +104,13 @@ function* editProduct(action) {
   try {
     yield call(editProductDB, product)
     yield editProductOkAction(product)
+     // Alert
+    Swal.fire({
+      title: 'Updated!',
+      text: 'The product has been updated.',
+      icon: 'success',
+      confirmButtonColor: '#62a086'
+    })
   } catch (error) {
     yield editProductErrorAction()
   }

@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  background: url('../../img/pineapple-2588302_1920.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: bottom;
+  font-family: Montserrat;
+  font-size: 1.2rem;
+}
+
+.header {
+  background-color: #62a086;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  align-items: center;
+}
+
+.header__title {
+  margin: 0;
+  padding: 1rem;
+  color: white;
+}
+
+.button {
+  font-family: Montserrat;
+  font-size: 1rem;
+  border: 0;
+  border-radius: 8px;
+  color: white;
+  width: 4.5rem;
+  padding: 0.3rem;
+  cursor: pointer;
+}
+
+.button > a {
+  text-decoration: none;
+  color: white;
+  font-family: Montserrat;
+}
+
+.button--new {
+  background-color: #e7b742;
+  width: 8rem;
+  padding: 0.5rem;
+}

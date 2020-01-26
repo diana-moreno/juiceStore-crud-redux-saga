@@ -1,13 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './index.css'
 
 const Header = () => {
   return (
-    <nav>
+    <nav className='header'>
       <div>
-        <h1>Juice store</h1>
+        <h1 className='header__title'>Juice store</h1>
       </div>
-      <Link to={'/products/new'}>Add product</Link>
+      <button className='button button--new'>
+        <Link to={'/products/new'}>Add product</Link>
+      </button>
     </nav>
   )
 }

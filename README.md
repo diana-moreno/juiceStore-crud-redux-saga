@@ -1,5 +1,7 @@
 # CRUD-REDUX-SAGA
 
+![juice-store](./img/juice-store.png)
+
 ## Introduction
 
 Simple products CRUD developed to learn React Redux with redux-saga.

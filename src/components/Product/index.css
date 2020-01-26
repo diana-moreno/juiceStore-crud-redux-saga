@@ -1,0 +1,21 @@
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.button--edit {
+  background-color: #e7b742;
+}
+
+.button--delete {
+  background-color: #f66b61;
+}
+
+.prices,
+.ids {
+  text-align: center;
+}
+
+.swal2-title {
+  font-size: 1.5rem;
+}

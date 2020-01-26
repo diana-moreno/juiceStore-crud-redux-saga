@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { downloadProductsAction } from '../../actions/products-actions'
 import Product from '../Product'
+import './index.css'
 
 const Products = () => {
   useEffect(() => {
@@ -14,16 +15,15 @@ const Products = () => {
 
   return (
     <div>
-      <h1>Products</h1>
+      <h2 className='table__title'>Products</h2>
       { error ? <p>An error ocurred</p> : null }
       { loading ? <p>Loading...</p> : null }
-      <table>
+      <table className='table'>
         <thead>
           <tr>
             <th>Name</th>
-            <th>Price</th>
-            <th>Id</th>
-            <th>Actions</th>
+            <th id='table__title-price'>Price</th>
+            <th id='table__title-action'>Actions</th>
           </tr>
         </thead>
         <tbody>
