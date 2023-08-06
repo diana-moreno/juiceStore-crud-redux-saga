@@ -21,8 +21,8 @@
     "gh-pages": "^2.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test --runInBand --no-cache",
     "test-debug": "react-scripts inspect test --runInBand --no-cache",
     "test:coverage": "react-scripts test --coverage --watchAll",
